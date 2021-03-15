@@ -2,6 +2,20 @@
 
 Dado um modelo de curso, o estudante pode evoluir nele.
 
+## Requisitos
+
+* graphviz
+	- No UBUNTU:
+	```SHELL
+	sudo apt-get install graphviz
+	```
+
+* Pacotes do python:
+	- Usar o comando:
+	```SHELL
+	pip3 install -r requirements.txt
+	``` 
+
 * Estrutura de um estudante:
 
     *  estado corrente:
