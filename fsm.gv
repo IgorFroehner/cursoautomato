@@ -1,0 +1,20 @@
+digraph finite_state_machine {
+	rankdir=LR size="8,5"
+	node [shape=none]
+	qi
+	node [shape=doublecircle]
+	K
+	node [shape=circle]
+	qi -> N0
+	N0 -> N1 [label="(a1, c11), (a1, c12)"]
+	N0 -> N2 [label="(a2, c21), (a2, c22)"]
+	N1 -> N0 [label="(ret, ε)"]
+	N1 -> N1 [label="(a1, c11), (a1, c12)"]
+	N1 -> N2 [label="(a2, c21), (a2, c22)"]
+	N2 -> N2 [label="(a2, c21), (a2, c22)"]
+	N2 -> N1 [label="(a1, c11), (a1, c12)"]
+	N2 -> N0 [label="(ret, ε)"]
+	N1 -> K [label="(fim, ε)"]
+	N2 -> K [label="(fim, ε)"]
+	N0 -> K [label="(fim, ε)"]
+}
