@@ -1,12 +1,10 @@
-
 from graphviz import Digraph
 
-gra = Digraph()
 
-gra.node('a', 'Machine Learning Errors')
-gra.node('b', 'RMSE')
-gra.node('c', 'MAE')
+class Grafo:
+    def __init__(self, name='fsm', format='png'):
+        self.graph = Digraph(name, format=format)
+        self.graph.attr(rankdir='LR', size='8,5')
 
-gra.edges(['ab', 'ac'])
-
-gra.render('a.png', view=True)
+    def drawMachine(self, data):
+        print(data)
