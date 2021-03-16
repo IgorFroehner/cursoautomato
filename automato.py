@@ -14,7 +14,7 @@ class Automato:
     def automatoTeste(self):
         '''
         Retorna um automato mais simples para fazer testes
-        exemplo do slide 14 da aula de automatos com saida
+        é o automato exemplo do slide 14 da aula de automatos com saida
         '''
         res = Automato()
         res.sigma = ['a0', 'a1']
