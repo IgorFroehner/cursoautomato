@@ -1,10 +1,10 @@
 
 class Estado:
 
-	def __init__(self, label, final):
+	def __init__(self, label, final=False):
 		self.label = label
 		self.transicoes = {}
-		self.is_final = final
+		self.eFinal = final
 
 	def __eq__(self, other):
 		return self.label==other.label
@@ -16,7 +16,7 @@ class Estado:
 	def getTransicoes(self):
 		return self.transicoes.copy()
 
-	def toString(self):
+	def getLabel(self):
 		return self.label
 
 
