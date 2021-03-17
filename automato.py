@@ -3,13 +3,25 @@ from estado import Estado
 class Automato:
 
     def __init__(self):
-        self.sigma = [] # alfabeto
-        self.Q = [] # conjunto de estados
+        self.sigma = sigma # alfabeto
+        self.Q = {} # conjunto de estados {label: estado}
         self.q0 = None # estado inicial
         self.F = [] # conjunto de estados finais
         self.delta = [] # alfabeto de símbolos de saída
         # a funcao programa fica definida nos estados e suas transições
         self.saida = ''
+
+    def addEstado(self, label, final=False):
+        self.Q[label] = Estado(label)
+
+    def addTransicao(self, label_start, label_end, simbolo, saida):
+        if not label_start in self.Q and not label_end in self.Q:
+            print('Estado não label informada não existe no automato')
+        else:
+            self.Q[label_start].addTransicao(Estado(label_end), simbolo, saida)
+
+    def getTransicoes(self, label):
+        return self.Q[label].getTransicoes()
 
     def automatoTeste(self):
         '''
@@ -19,17 +31,17 @@ class Automato:
         res = Automato()
         res.sigma = ['a0', 'a1']
 
-        qe = Estado('qe', False)
-        q1 = Estado('q1', True)
-        q0 = Estado('q0', True)
+        res.addEstado('qe')
+        res.addEstado('q1', True)
+        res.addEstado('q0', True)
 
-        qe.addTransicao(q1, 'a1', 'u0u1')
-        qe.addTransicao(q0, 'a0', 'u0u0')
+        res.addTransicao('qe', 'q1', 'a1', 'u0u1')
+        res.addTransicao('qe', 'q0', 'a0', 'u0u0')
         
+        res.addTransicao()
         q0.addTransicao(q1, 'a1', 'u1')
         q0.addTransicao(q0, 'a0', 'u0')
 
-        res.Q = [qe, q0, q1]
         res.q0 = qe
         res.delta = ['u0u1', 'u0u0', 'u1', 'u0']
         res.F = [q0, q1]

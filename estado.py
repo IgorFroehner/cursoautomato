@@ -12,7 +12,14 @@ class Estado:
 	def addTransicao(self, estado, simbolo, saida):
 		self.transicoes[simbolo] = [estado, saida] 
 		# transicoes[0] é o estado e [1] é a saida dessa transicao
+	
+	def getTransicoes(self):
+		return self.transicoes.copy()
 
 	def toString(self):
 		return self.label
 
+
+if __name__=='__main__':
+
+	print(Estado('a', False) == Estado('a', False))
