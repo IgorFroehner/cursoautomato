@@ -96,7 +96,29 @@ class Automato:
 
 
     def automatoLFA(self):
-        pass
+        
+        res = Automato()
+
+        res.addEstado('aula01')
+        res.addEstado('aula02')
+        res.addEstado('aula03')
+        res.addEstado('aula04')
+        res.addEstado('concl', True)
+        res.setSigma(['a', 'b', 'c', 'd'])
+        res.setEstadoInicial('aula01')
+
+        res.addTransicao('aula01', 'aula02', 'a', 'https://ricardofm.me/index.php?option=com_attachments&task=download&id=6')
+        res.addTransicao('aula02', 'aula03', 'a', 'https://ricardofm.me/index.php?option=com_attachments&task=download&id=9')
+        res.addTransicao('aula03', 'aula04', 'a', 'https://ricardofm.me/index.php?option=com_attachments&task=download&id=13')
+        res.addTransicao('aula03', 'aula04', 'a', 'https://ricardofm.me/index.php?option=com_attachments&task=download&id=15')
+
+        res.addSaidas(['https://ricardofm.me/index.php?option=com_attachments&task=download&id=6',
+                       'https://ricardofm.me/index.php?option=com_attachments&task=download&id=9',
+                       'https://ricardofm.me/index.php?option=com_attachments&task=download&id=13',
+                       'https://ricardofm.me/index.php?option=com_attachments&task=download&id=15'
+        ])
+
+        return res
 
 
 if __name__=='__main__':
