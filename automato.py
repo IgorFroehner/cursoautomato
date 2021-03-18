@@ -15,6 +15,8 @@ class Automato:
 
     def addEstado(self, label, final=False):
         self.Q[label] = Estado(label, final)
+        if final and self.Q[label] not in self.F:
+            self.F.append(self.Q[label])
 
     def setEstadoInicial(self, label_inicial):
         self.q0 = self.Q[label_inicial]
@@ -45,7 +47,10 @@ class Automato:
         return self.q0.getLabel()
 
     def eEstadoFinal(self, label_estado):
-        return self.Q[label_estado].eFinal
+        return self.Q[label_estado] in self.F
+    
+    def setSigma(self, sigma):
+        self.sigma.extend(sigma)
 
     def automatoTeste(self):
         '''
@@ -53,7 +58,7 @@ class Automato:
         é o automato exemplo do slide 14 da aula de automatos com saida
         '''
         res = Automato()
-        res.sigma = ['a0', 'a1']
+        res.setSigma(['a0', 'a1'])
 
         res.addEstado('qe')
         res.addEstado('q1', True)
@@ -69,6 +74,26 @@ class Automato:
         res.addSaidas(['u0u1', 'u0u0', 'u1', 'u0'])
         res.addEstadosFinais(['q0', 'q1'])
         return res
+    
+    def automatoExe(self):
+        '''
+        Retorna um automato exemplo que tem no livro do Menezes
+        '''
+        res = Automato()
+        res.addEstado('q', True)
+        res.addEstado('p', True)
+        
+        res.setEstadoInicial('q')
+        res.addSaidas(['A', 'B'])
+        res.setSigma(['a', 'b'])
+
+        res.addTransicao('q', 'q', 'a', 'A')
+        res.addTransicao('q', 'p', 'b', 'B')
+        res.addTransicao('p', 'q', 'a', 'B')
+        res.addTransicao('p', 'p', 'b', 'B')
+
+        return res
+
 
     def automatoLFA(self):
         pass

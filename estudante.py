@@ -65,7 +65,7 @@ if __name__=='__main__':
 
     est = Estudante('teste')
     aut = Automato()
-    est.automato = aut.automatoTeste()
+    est.automato = aut.automatoExe()
     gra = Grafo()
     est.grafo = gra
 
