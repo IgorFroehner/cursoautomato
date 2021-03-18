@@ -1,5 +1,6 @@
-
+from gera_grafo import Grafo
 from automato import Automato
+
 
 class Estudante:
     '''
@@ -12,9 +13,11 @@ class Estudante:
         self.fita = '' # palavra de entrada
         self.saida = '' # saida até o momento
         self.automato = None # instancia de automato referete a este estudante
+        self.grafo = None # instacia de grafo
 
     def jogador(self):
         self.estado_atual = self.automato.getEstadoInicial()
+        self.estado_antigo = self.estado_atual
         self.saida = ''
         while True:
             print(f'estado atual {self.estado_atual}')
@@ -31,8 +34,11 @@ class Estudante:
             
             if not simbolo in self.automato.getTransicoes(self.estado_atual):
                 if self.automato.eEstadoFinal(self.estado_atual):
+                    # self.estado_atual = self.automato.getTransicoes(self.estado_atual)[simbolo][0].getLabel()
                     print("Leitura concluida, nao há mais transições, a saida foi:")
                     print(self.saida)
+                    self.grafo.drawMachine(self)
+                    # self.estado_antigo = self.estado_atual
                     break
                 else:
                     print('Palavra não reconhecida')
@@ -41,6 +47,10 @@ class Estudante:
                 print(f'\nsaida ate agora: {self.saida}\n')
 
                 self.estado_atual = self.automato.getTransicoes(self.estado_atual)[simbolo][0].getLabel()
+
+                self.grafo.drawMachine(self)
+
+                self.estado_antigo = self.estado_atual
 
                 if len(self.automato.getTransicoes(self.estado_atual))==0: 
                     if self.automato.eEstadoFinal(self.estado_atual):
@@ -56,5 +66,7 @@ if __name__=='__main__':
     est = Estudante('teste')
     aut = Automato()
     est.automato = aut.automatoTeste()
+    gra = Grafo()
+    est.grafo = gra
 
     est.jogador()
