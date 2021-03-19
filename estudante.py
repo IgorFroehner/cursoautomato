@@ -7,13 +7,20 @@ class Estudante:
     Classe que vai jogar o automato
     ''' 
 
-    def __init__(self, nome):
+    def __init__(self, nome, n_automato):
         self.nome = nome
         self.estado_corrente = '' # uma string contendo a label do estado atual 
         self.fita = '' # palavra de entrada
         self.saida = [] # saida até o momento
-        self.automato = None # instancia de automato referete a este estudante
-        self.grafo = None # instacia de grafo
+        self.automato = None
+        if n_automato==1:
+            self.automato = Automato().automatoTeste()
+        if n_automato==2:
+            self.automato = Automato().automatoExe()
+        if n_automato==3:
+            self.automato = Automato().automatoLFA()
+
+        self.grafo = Grafo() # instacia de grafo
 
     def jogador(self):
         self.estado_atual = self.automato.getEstadoInicial()
@@ -63,10 +70,6 @@ class Estudante:
 
 if __name__=='__main__':
 
-    est = Estudante('teste')
-    aut = Automato()
-    est.automato = aut.automatoLFA()
-    gra = Grafo()
-    est.grafo = gra
+    est = Estudante('teste', 3)
 
     est.jogador()

@@ -23,7 +23,7 @@ class Automato:
 
     def addTransicao(self, label_de, label_para, simbolo, saida):
         if not label_de in self.Q and not label_para in self.Q:
-            print('Estado não label informada não existe no automato')
+            print('Estado com label informada não existe no automato')
         else:
             self.Q[label_de].addTransicao(Estado(label_para), simbolo, saida)
 
@@ -65,6 +65,7 @@ class Automato:
         res.addEstado('q0', True)
 
         res.addTransicao('qe', 'q1', 'a1', 'u0u1')
+        res.addTransicao('qe', 'q1', 'a1', 'u0u2')
         res.addTransicao('qe', 'q0', 'a0', 'u0u0')
         
         res.addTransicao('q0', 'q1', 'a1', 'u1')
