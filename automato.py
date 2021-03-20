@@ -121,9 +121,123 @@ class Automato:
 
         return res
 
+    def automatoFinal(self):
+        '''
+        Retorna o automato que será apresentado ao professor
+        '''
+
+        res = Automato()
+
+        # Todas as aulas
+        # Grupo da lista 1
+        res.addEstado('aula01')
+        res.addEstado('aula02')
+        res.addEstado('aula03')
+        res.addEstado('aula04')
+        res.addEstado('aula05')
+        res.addEstado('aula06')
+        res.addEstado('aula07')
+
+        # Grupo da lista 2
+        res.addEstado('aula08')
+
+        # Grupo sem lista
+        res.addEstado('aula09')
+        res.addEstado('aula10')
+        res.addEstado('aula11')
+        res.addEstado('aula12')
+        res.addEstado('aula13')
+        res.addEstado('aula14')
+        res.addEstado('aula15')
+        res.addEstado('aula16')
+        res.addEstado('aula17')
+
+        # Estado final
+        res.addEstado('aula18', True)
+
+        # Estado inicial
+        res.setEstadoInicial('aula01')
+
+        # ai - Slides da aula
+        res.setSigma([f'a{i}' for i in range(1, 18)])
+
+        # Transições (Relacionar x com o dicionário de links ou com o arquivo html a ser aberto)
+        res.addTransicao('aula01', 'aula02', 'a1',
+                         'x1')
+        res.addTransicao('aula02', 'aula03', 'a2',
+                         'x2')
+        res.addTransicao('aula02', 'aula02', 'a1',
+                         'x1')
+        res.addTransicao('aula03', 'aula04', 'a3',
+                         'x3')
+        res.addTransicao('aula03', 'aula03', 'a2',
+                         'x2')
+        res.addTransicao('aula04', 'aula05', 'a4',
+                         'x4')
+        res.addTransicao('aula04', 'aula04', 'a3',
+                         'x3')
+        res.addTransicao('aula05', 'aula06', 'a5',
+                         'x5')
+        res.addTransicao('aula05', 'aula05', 'a4',
+                         'x4')
+        res.addTransicao('aula06', 'aula07', 'a6',
+                         'x6')
+        res.addTransicao('aula06', 'aula06', 'a5',
+                         'x5')
+        res.addTransicao('aula07', 'aula08', 'a7',
+                         'x7')  # Além do link da aula, incluir o link da primeira e segunda lista
+        res.addTransicao('aula07', 'aula07', 'a6',
+                         'x6')
+        res.addTransicao('aula08', 'aula09', 'a8',
+                         'x8')  # Além do link da aula, incluir o link da terceira lista
+        res.addTransicao('aula08', 'aula08', 'a7',
+                         'x7')
+        res.addTransicao('aula09', 'aula10', 'a9',
+                         'x9')
+        res.addTransicao('aula09', 'aula09', 'a8',
+                         'x8')
+        res.addTransicao('aula10', 'aula11', 'a10',
+                         'x10')
+        res.addTransicao('aula10', 'aula10', 'a9',
+                         'x9')
+        res.addTransicao('aula11', 'aula12', 'a11',
+                         'x11')
+        res.addTransicao('aula11', 'aula11', 'a10',
+                         'x10')
+        res.addTransicao('aula12', 'aula13', 'a12',
+                         'x12')
+        res.addTransicao('aula12', 'aula12', 'a11',
+                         'x11')
+        res.addTransicao('aula13', 'aula14', 'a13',
+                         'x13')
+        res.addTransicao('aula13', 'aula13', 'a12',
+                         'x12')
+        res.addTransicao('aula14', 'aula15', 'a14',
+                         'x14')
+        res.addTransicao('aula14', 'aula14', 'a13',
+                         'x13')
+        res.addTransicao('aula15', 'aula16', 'a15',
+                         'x15')
+        res.addTransicao('aula15', 'aula15', 'a14',
+                         'x14')
+        res.addTransicao('aula16', 'aula17', 'a16',
+                         'x16')
+        res.addTransicao('aula16', 'aula16', 'a15',
+                         'x15')
+        res.addTransicao('aula17', 'aula18', 'a17',
+                         'x17')
+        res.addTransicao('aula17', 'aula17', 'a16',
+                         'x16')
+        res.addTransicao('aula18', 'aula18', 'a17',
+                         'x17')
+
+        res.addSaidas([f'x{i}' for i in range(1, 18)])
+
+        return res
 
 if __name__=='__main__':
     
     a = Automato()
     a = a.automatoTeste()
+
 

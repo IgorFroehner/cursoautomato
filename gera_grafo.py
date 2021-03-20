@@ -12,7 +12,7 @@ class Grafo:
     def drawMachine(self, estudante):
         # Cria um novo diagraph em branco
         self.graph = Digraph(self.name, format=self.format)
-        self.graph.attr(rankdir='LR', size='8,5')
+        self.graph.attr(rankdir='LR')
 
         # Estado inicial para o estudante
         self.graph.attr('node', shape='none')

@@ -15,10 +15,12 @@ class Estudante:
         self.automato = None
         if n_automato==1:
             self.automato = Automato().automatoTeste()
-        if n_automato==2:
+        elif n_automato==2:
             self.automato = Automato().automatoExe()
-        if n_automato==3:
+        elif n_automato==3:
             self.automato = Automato().automatoLFA()
+        elif n_automato==4:
+            self.automato = Automato().automatoFinal()
 
         self.grafo = Grafo() # instacia de grafo
 
@@ -70,6 +72,6 @@ class Estudante:
 
 if __name__=='__main__':
 
-    est = Estudante('teste', 3)
+    est = Estudante('teste', 4)
 
     est.jogador()
