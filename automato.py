@@ -238,8 +238,8 @@ class Automato:
         res.addTransicao('concl', 'concl', 'a18',
                          'x18')
 
-        res.addSaidas([f'x{i}' for i in range(1, 19)])
         res.addSaidas([f'c{i}' for i in range(1, 19)])
+        res.addSaidas([f'x{i}' for i in range(1, 19)])
 
         res.links['x1'] = ['https://ricardofm.me/index.php?option=com_attachments&task=download&id=6']
         res.links['x2'] = ['https://ricardofm.me/index.php?option=com_attachments&task=download&id=9']

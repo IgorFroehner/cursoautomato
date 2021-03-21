@@ -29,9 +29,11 @@ class Estudante:
         self.estado_atual = self.automato.getEstadoInicial()
         self.estado_antigo = self.estado_atual
         self.saida = []
+        estados_visitados = 1
 
         while True:
             print(f'Estado atual: {self.estado_atual}')
+            print(f'Porcentagem de conclusão do estudo: {round(estados_visitados * 100 / len(self.automato.Q), 2)}%')
             
             print('Transições possíveis:')
 
@@ -55,7 +57,7 @@ class Estudante:
                         abrir_site(self.automato.links[self.automato.delta[-1]])
                         break
                     else:
-                        print('Palavra não reconhecida')
+                        print('Símbolo não reconhecido, tente novamente.\n')
                 else:
                     self.saida.append(self.automato.getTransicoes(self.estado_atual)[simbolo][1])
                     print(f'\nSaída até agora: {"".join(self.saida)}\n')
@@ -64,6 +66,9 @@ class Estudante:
 
                     self.grafo.drawMachine(self)
                     abrir_site(self.automato.links[self.automato.getTransicoes(self.estado_atual)[simbolo][1]])
+
+                    if self.estado_atual != self.estado_antigo:
+                        estados_visitados += 1
 
                     self.estado_antigo = self.estado_atual
 
@@ -91,7 +96,7 @@ class Estudante:
                     link = input(f'Entre com o link {i + 1}: ')
                     self.automato.links[saida].extend(link)
             else:
-                print("Opção indisponível, tente novamente")
+                print("Opção indisponível, tente novamente\n")
 
 
 if __name__ == '__main__':

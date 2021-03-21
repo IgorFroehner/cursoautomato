@@ -19,4 +19,4 @@ if __name__ == '__main__':
             est3.jogador()
             break
         else:
-            print("Opção indisponível, tente novamente.")
+            print("Opção indisponível, tente novamente.\n")
