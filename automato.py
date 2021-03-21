@@ -6,13 +6,13 @@ class Automato:
     '''
 
     def __init__(self):
-        self.sigma = [] # alfabeto
-        self.Q = {} # conjunto de estados {label: estado}
-        self.q0 = None # estado inicial
-        self.F = [] # conjunto de estados finais
-        self.delta = [] # alfabeto de símbolos de saída
+        self.sigma = []  # alfabeto
+        self.Q = {}  # conjunto de estados {label: estado}
+        self.q0 = None  # estado inicial
+        self.F = []  # conjunto de estados finais
+        self.delta = []  # alfabeto de símbolos de saída
         # a funcao programa fica definida nos estados e suas transições
-        self.links = {}
+        self.links = {}  # dicionário de saída: links
 
     def addEstado(self, label, final=False):
         self.Q[label] = Estado(label, final)
@@ -257,10 +257,10 @@ class Automato:
         res.links['x17'] = ['https://ricardofm.me/index.php?option=com_attachments&task=download&id=81', 'https://ricardofm.me/index.php?option=com_attachments&task=download&id=87']
         res.links['x18'] = ['https://ricardofm.me/index.php?option=com_attachments&task=download&id=85']
 
-
         return res
 
-if __name__=='__main__':
+
+if __name__ == '__main__':
     
     a = Automato()
     a = a.automatoTeste()

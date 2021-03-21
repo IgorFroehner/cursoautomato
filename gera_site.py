@@ -2,14 +2,15 @@ import webbrowser
 
 
 def abrir_site(links):
-    # to open/create a new html file in the write mode
+    # Abre o arquivo
     f = open('x.html', 'w')
 
+    # Gera a lista de links
     link_string = ''
     for index, link in enumerate(links):
         link_string += f"<li><p>Link {index + 1}: <a href='{link}' target='_blank'>{link}</a></p></li>"
 
-    # the html code which will go in the file GFG.html
+    # Gera o html da página
     html_template = f""" 
     <!DOCTYPE html>
     <html lang="en">
@@ -25,10 +26,11 @@ def abrir_site(links):
     </html>
     """
 
-    # writing the code into the file
+    # Escreve o html no arquivo
     f.write(html_template)
 
-    # close the file
+    # Fecha o arquivo
     f.close()
 
+    # Abre o arquivo no browser
     webbrowser.open_new_tab('x.html')
