@@ -162,6 +162,7 @@ class Automato:
 
         # ai - Slides da aula
         res.setSigma([f'a{i}' for i in range(1, 19)])
+        res.setSigma([f'a{i}c' for i in range(1, 19)])
 
         # Transições (Relacionar x com o dicionário de links ou com o arquivo html a ser aberto)
         res.addTransicao('aula01', 'aula02', 'a1',
@@ -238,6 +239,8 @@ class Automato:
                          'x18')
 
         res.addSaidas([f'x{i}' for i in range(1, 19)])
+        res.addSaidas([f'c{i}' for i in range(1, 19)])
+
         res.links['x1'] = ['https://ricardofm.me/index.php?option=com_attachments&task=download&id=6']
         res.links['x2'] = ['https://ricardofm.me/index.php?option=com_attachments&task=download&id=9']
         res.links['x3'] = ['https://ricardofm.me/index.php?option=com_attachments&task=download&id=13']
@@ -263,6 +266,6 @@ class Automato:
 if __name__ == '__main__':
     
     a = Automato()
-    a = a.automatoTeste()
+    a = a.automatoFinal()
 
 
