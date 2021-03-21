@@ -1,5 +1,6 @@
 from gera_grafo import Grafo
 from automato import Automato
+from gera_site import abrir_site
 
 
 class Estudante:
@@ -43,11 +44,10 @@ class Estudante:
             
             if not simbolo in self.automato.getTransicoes(self.estado_atual):
                 if self.automato.eEstadoFinal(self.estado_atual):
-                    # self.estado_atual = self.automato.getTransicoes(self.estado_atual)[simbolo][0].getLabel()
                     print("Leitura concluida, nao há mais transições, a saida foi:")
                     print(self.saida)
-                    self.grafo.drawMachine(self)
-                    # self.estado_antigo = self.estado_atual
+                    self.grafo.drawMachine(self, True)
+                    abrir_site(self.automato.links[self.automato.delta[-1]])
                     break
                 else:
                     print('Palavra não reconhecida')
@@ -58,6 +58,7 @@ class Estudante:
                 self.estado_atual = self.automato.getTransicoes(self.estado_atual)[simbolo][0].getLabel()
 
                 self.grafo.drawMachine(self)
+                abrir_site(self.automato.links[self.automato.getTransicoes(self.estado_atual)[simbolo][1]])
 
                 self.estado_antigo = self.estado_atual
 

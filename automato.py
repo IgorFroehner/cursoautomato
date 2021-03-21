@@ -12,6 +12,7 @@ class Automato:
         self.F = [] # conjunto de estados finais
         self.delta = [] # alfabeto de símbolos de saída
         # a funcao programa fica definida nos estados e suas transições
+        self.links = {}
 
     def addEstado(self, label, final=False):
         self.Q[label] = Estado(label, final)
@@ -151,15 +152,16 @@ class Automato:
         res.addEstado('aula15')
         res.addEstado('aula16')
         res.addEstado('aula17')
+        res.addEstado('aula18')
 
         # Estado final
-        res.addEstado('aula18', True)
+        res.addEstado('concl', True)
 
         # Estado inicial
         res.setEstadoInicial('aula01')
 
         # ai - Slides da aula
-        res.setSigma([f'a{i}' for i in range(1, 18)])
+        res.setSigma([f'a{i}' for i in range(1, 19)])
 
         # Transições (Relacionar x com o dicionário de links ou com o arquivo html a ser aberto)
         res.addTransicao('aula01', 'aula02', 'a1',
@@ -230,8 +232,31 @@ class Automato:
                          'x16')
         res.addTransicao('aula18', 'aula18', 'a17',
                          'x17')
+        res.addTransicao('aula18', 'concl', 'a18',
+                         'x18')
+        res.addTransicao('concl', 'concl', 'a18',
+                         'x18')
 
-        res.addSaidas([f'x{i}' for i in range(1, 18)])
+        res.addSaidas([f'x{i}' for i in range(1, 19)])
+        res.links['x1'] = ['https://ricardofm.me/index.php?option=com_attachments&task=download&id=6']
+        res.links['x2'] = ['https://ricardofm.me/index.php?option=com_attachments&task=download&id=9']
+        res.links['x3'] = ['https://ricardofm.me/index.php?option=com_attachments&task=download&id=13']
+        res.links['x4'] = ['https://ricardofm.me/index.php?option=com_attachments&task=download&id=15']
+        res.links['x5'] = ['https://ricardofm.me/index.php?option=com_attachments&task=download&id=16', 'https://ricardofm.me/index.php?option=com_attachments&task=download&id=25']
+        res.links['x6'] = ['https://ricardofm.me/index.php?option=com_attachments&task=download&id=17']
+        res.links['x7'] = ['https://ricardofm.me/index.php?option=com_attachments&task=download&id=24', 'https://ricardofm.me/index.php?option=com_attachments&task=download&id=10', 'https://ricardofm.me/index.php?option=com_attachments&task=download&id=26', 'https://ricardofm.me/index.php?option=com_attachments&task=download&id=27']
+        res.links['x8'] = ['https://ricardofm.me/index.php?option=com_attachments&task=download&id=45', 'https://ricardofm.me/index.php?option=com_attachments&task=download&id=46', 'https://ricardofm.me/index.php?option=com_attachments&task=download&id=47']
+        res.links['x9'] = ['https://ricardofm.me/index.php?option=com_attachments&task=download&id=48']
+        res.links['x10'] = ['https://ricardofm.me/index.php?option=com_attachments&task=download&id=49']
+        res.links['x11'] = ['https://ricardofm.me/index.php?option=com_attachments&task=download&id=61']
+        res.links['x12'] = ['https://ricardofm.me/index.php?option=com_attachments&task=download&id=62']
+        res.links['x13'] = ['https://ricardofm.me/index.php?option=com_attachments&task=download&id=63']
+        res.links['x14'] = ['https://ricardofm.me/index.php?option=com_attachments&task=download&id=67']
+        res.links['x15'] = ['https://ricardofm.me/index.php?option=com_attachments&task=download&id=79']
+        res.links['x16'] = ['https://ricardofm.me/index.php?option=com_attachments&task=download&id=80', 'https://ricardofm.me/index.php?option=com_attachments&task=download&id=82']
+        res.links['x17'] = ['https://ricardofm.me/index.php?option=com_attachments&task=download&id=81', 'https://ricardofm.me/index.php?option=com_attachments&task=download&id=87']
+        res.links['x18'] = ['https://ricardofm.me/index.php?option=com_attachments&task=download&id=85']
+
 
         return res
 

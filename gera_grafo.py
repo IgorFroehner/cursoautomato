@@ -3,13 +3,11 @@ from graphviz import Digraph
 
 class Grafo:
     def __init__(self, name='fsm', format='png'):
-        # self.graph = Digraph(name, format=format)
-        # self.graph.attr(rankdir='LR', size='8,5')
         self.graph = None
         self.name = name
         self.format = format
 
-    def drawMachine(self, estudante):
+    def drawMachine(self, estudante, fim=False):
         # Cria um novo diagraph em branco
         self.graph = Digraph(self.name, format=self.format)
         self.graph.attr(rankdir='LR')
@@ -34,7 +32,7 @@ class Grafo:
         # Transicoes
         for estado in estudante.automato.Q:
             for simbolo, estado_saida in estudante.automato.getTransicoes(estado).items():
-                if estado_saida[0].getLabel() == estudante.estado_atual and estado == estudante.estado_antigo:
+                if estado_saida[0].getLabel() == estudante.estado_atual and estado == estudante.estado_antigo and not fim:
                     self.graph.edge(estado, estado_saida[0].getLabel(), label=f'({simbolo}, {estado_saida[1]})', color='blue')
                 else:
                     self.graph.edge(estado, estado_saida[0].getLabel(), label=f'({simbolo}, {estado_saida[1]})')
