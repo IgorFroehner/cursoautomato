@@ -21,7 +21,7 @@ def estado(nome_aluno, estado=None):
         estudantes[nome_aluno].initializeWeb()
         estado = estudantes[nome_aluno].getEstadoAtual()
     
-    estudantes[nome_aluno].renderizarAutomato()
+    # estudantes[nome_aluno].renderizarAutomato()
     return render_template('aluno.html', estudante=estudantes[nome_aluno], estado=estado)
 
 @app.route('/fazer_transicao/<nome_aluno>/<simbolo>')
