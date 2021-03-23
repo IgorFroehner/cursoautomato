@@ -51,7 +51,7 @@ class Estudante:
 
         self.estado_atual = self.automato.getTransicoes(self.estado_atual)[simbolo][0].getLabel()
 
-        self.grafo.renderDrawMachine(self)
+        # self.grafo.renderDrawMachine(self)
         self.links = self.automato.links[self.automato.getTransicoes(self.estado_atual)[simbolo][1]]
         abrir_links(self.links)
 
