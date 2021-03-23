@@ -94,7 +94,7 @@ class Estudante:
 
                 for i in range(qtd_links):
                     link = input(f'Entre com o link {i + 1}: ')
-                    self.automato.links[saida].extend(link)
+                    self.automato.links[saida].append(link)
             else:
                 print("Opção indisponível, tente novamente\n")
 
