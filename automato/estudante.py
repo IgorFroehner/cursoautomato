@@ -15,7 +15,7 @@ class Estudante:
         self.saida = []  # saida até o momento
         self.automato = None
         self.links = None
-        self.estados_visitados = 0
+        self.estados_visitados = {}
         if n_automato == 1:
             self.automato = Automato().automatoTeste()
         elif n_automato == 2:
@@ -32,6 +32,7 @@ class Estudante:
 
     def initializeWeb(self):
         self.estado_atual = self.automato.getEstadoInicial()
+        self.estados_visitados[self.estado_atual] = True
         self.estado_antigo = self.estado_atual
         self.fita = ''
         self.saida = []
@@ -40,7 +41,7 @@ class Estudante:
         return self.estado_atual
 
     def getProgressoAtual(self):
-        return round(self.estados_visitados * 100 / len(self.automato.Q), 2)
+        return round(len(self.estados_visitados) * 100 / (len(self.automato.Q)), 2)
 
     def renderizarAutomato(self):
         self.grafo.renderDrawMachine(self)
@@ -49,21 +50,17 @@ class Estudante:
         ''' Retorna os links da transição ou None, se retorna None é pq deu erro '''
         self.saida.append(self.automato.getTransicoes(self.estado_atual)[simbolo][1])
 
-        self.estado_atual = self.automato.getTransicoes(self.estado_atual)[simbolo][0].getLabel()
-
-        # self.grafo.renderDrawMachine(self)
-        self.links = self.automato.links[self.automato.getTransicoes(self.estado_atual)[simbolo][1]]
-        abrir_links(self.links)
-
-        if self.estado_atual != self.estado_antigo:
-            self.estados_visitados += 1
-
-        self.fita += simbolo
         self.estado_antigo = self.estado_atual
+        self.estado_atual = self.automato.getTransicoes(self.estado_atual)[simbolo][0].getLabel()
+        self.fita += simbolo
+        if self.estado_atual != self.estado_antigo:
+            self.estados_visitados[self.estado_atual] = True
 
-        if len(self.automato.getTransicoes(self.estado_atual)) == 0:
-            return None
-        return self.links
+        self.links = self.automato.links[self.automato.getTransicoes(self.estado_atual)[simbolo][1]]
+
+        # if len(self.automato.getTransicoes(self.estado_atual)) == 0:
+        #     return None
+        # return self.links
 
 
     def abrirLinks(self):
@@ -80,7 +77,7 @@ class Estudante:
 
         while True:
             print(f'Estado atual: {self.estado_atual}')
-            print(f'Porcentagem de conclusão do estudo: {round(self.estados_visitados * 100 / len(self.automato.Q), 2)}%')
+            print(f'Porcentagem de conclusão do estudo: {self.getProgressoAtual()}%')
             
             print('Transições possíveis:')
 
@@ -115,7 +112,7 @@ class Estudante:
                     gerar_pagina_links(self.automato.links[self.automato.getTransicoes(self.estado_atual)[simbolo][1]])
 
                     if self.estado_atual != self.estado_antigo:
-                        self.estados_visitados += 1
+                        self.estados_visitados[estado_atual] = True
 
                     self.estado_antigo = self.estado_atual
 

@@ -37,7 +37,7 @@ class Grafo:
                 else:
                     self.graph.edge(estado, estado_saida[0].getLabel(), label=f'({simbolo}, {estado_saida[1]})')
 
-        # self.graph.render(f'{estudante.nome}', format=self.format, directory='../static')
+        self.graph.render(f'{estudante.nome}', format=self.format, directory='./images/')
 
 
 

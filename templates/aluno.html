@@ -13,20 +13,20 @@
 
 <body>
     <div class="container-fluid bg-dark mb-auto mt-auto pt-5 pb-5">
-        <div class="container-lg align-items-center bg-secondary mb-auto mt-auto">
+        <div class="container-lg align-items-center bg-transparent mb-auto mt-auto">
             <div class="row align-content-center">
-                <h1 class="mb-5 mt-5 col-12 text-center">Nome do Aluno: {{estudante.nome}}</h1>
+                <h1 class="mb-5 mt-5 col-12 text-center text-white">Nome do Aluno: {{estudante.nome}}</h1>
             </div>
             <div class="row pt-4">
-                <h3 class="col-6 h3 text-center">Estado Atual: {{estado}}</h3>
-                <div class="col-6 text-center">
-                    <h5 class="h5">Porcentagem: {{estudante.getProgressoAtual()}} %</h3>
-                    <h5 class="h5">Fita: {{estudante.fita}}</h5>
-                    <h5 class="h5">Saída: {{''.join(estudante.saida)}}</h5>
+                <h3 class="col-3 h3 text-center text-white">Estado Atual: {{estudante.estado_atual}}</h3>
+                <div class="col-6 text-center text-white">
+                    <h5 class="h5 text-white">Porcentagem: {{estudante.getProgressoAtual()}} %</h3>
+                    <h5 class="h5 text-white">Fita: {{estudante.fita}}</h5>
+                    <h5 class="h5 text-white">Saída: {{''.join(estudante.saida)}}</h5>
                 </div>
             </div>
-            <div class="row pt-4">
-                <h3 class="h3 mb-3">Transições Possíveis:</h3>
+            <div class="row pt-4 text-center">
+                <h3 class="h3 mb-3 text-white">Transições Possíveis:</h3>
                 
                 {% for simbolo, transicao in estudante.getTransicoesAtuais().items() %}
                     <a class="link-info" href="/fazer_transicao/{{estudante.nome}}/{{simbolo}}">
@@ -34,22 +34,24 @@
                     </a>
                 {% endfor %}
             </div>
-            <div class="row">
+            <div class="row text-center">
                 {% if estudante.getLinks() %}
-                    <h2 class="h2 text-center">Conteúdo Atual</h2>
+                    <h2 class="h2 mt-2 text-white">Conteúdo Atual</h2>
                     {% for link in estudante.getLinks() %}
                         <a class="link-info" href="{{link}}">
                             {{link}}
                         </a>
                     {% endfor %}
-                    <button class="btn btn-success col-4 flex-fill m-3" onclick="{{estudante.abrirLinks()}}">Abrir conteúdo atual</button>
+                    <button class="btn btn-success col-4 flex-fill m-3" 
+                        onclick="window.location.href='{{estudante.abrirLinks()}}'">Abrir conteúdo atual
+                    </button>
                 {% endif %}
                 <button class="btn btn-info col-4 flex-fill m-3">Adicionar Conteúdo Customizado</button>
             </div>
-            <div class="row mb-3">
-                <h3 class="text-center">Autômato</h3>
-                <img src="{{url_for('static', filename=estudante.nome+'.png')}}">
-            </div>
+        </div>
+        <div class="row mb-3 mt-3">
+            <h3 class="text-center text-secondary">Autômato</h3>
+            <img src="{{url_for('images', filename=estudante.nome+'.png')}}">
         </div>
     </div>
 
