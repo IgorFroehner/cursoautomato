@@ -6,10 +6,10 @@ import os
 app = Flask(__name__)
 
 estudantes = {}
+alunos = ['igor', 'matheus']
 
 @app.route('/')
 def index(name=None):
-    alunos = ['igor', 'mateus']
     for k in estudantes:
         estudantes[k].initializeWeb()
     return render_template('index.html', alunos=alunos)
@@ -20,6 +20,8 @@ def estado(nome_aluno, estado=None):
         est = Estudante(nome_aluno, 4)
         estudantes[nome_aluno] = est
         estudantes[nome_aluno].initializeWeb()
+    if not nome_aluno in alunos:
+        alunos.append(nome_aluno)
     
     estudantes[nome_aluno].renderizarAutomato()
     return render_template('aluno.html', estudante=estudantes[nome_aluno])
