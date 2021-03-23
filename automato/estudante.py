@@ -112,7 +112,7 @@ class Estudante:
                     gerar_pagina_links(self.automato.links[self.automato.getTransicoes(self.estado_atual)[simbolo][1]])
 
                     if self.estado_atual != self.estado_antigo:
-                        self.estados_visitados[estado_atual] = True
+                        self.estados_visitados[self.estado_atual] = True
 
                     self.estado_antigo = self.estado_atual
 
