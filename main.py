@@ -1,4 +1,4 @@
-from estudante import Estudante
+from automato.estudante import Estudante
 
 if __name__ == '__main__':
 

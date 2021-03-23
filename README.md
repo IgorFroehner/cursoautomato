@@ -2,10 +2,11 @@
 
 Dado um modelo de curso, o estudante pode evoluir nele.
 
-## Requisitos
+## Pré-Requisitos
+
+O sistema operacional usado foi UBUNTU.
 
 * graphviz
-	- No UBUNTU:
 	```SHELL
 	sudo apt-get install graphviz
 	```
@@ -15,6 +16,20 @@ Dado um modelo de curso, o estudante pode evoluir nele.
 	```SHELL
 	pip3 install -r requirements.txt
 	``` 
+
+## Para Executar
+
+Versão para terminal
+
+```SHELL
+python3 main.py
+```
+
+Versão web (versão incompleta)
+
+```SHELL
+flask run
+```
 
 ## Estrutura do Autômato
 

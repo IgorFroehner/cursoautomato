@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+    <title>Estudo de {{estudante.nome}}</title>
+</head>
+
+<body>
+    <div class="container-fluid bg-dark mb-auto mt-auto pt-5 pb-5">
+        <div class="container-lg align-items-center bg-transparent mb-auto mt-auto">
+            <div class="row align-content-center">
+                <h1 class="mb-5 mt-5 col-12 text-center text-white">Nome do Aluno: {{estudante.nome}}</h1>
+            </div>
+            <div class="row pt-4">
+                <h3 class="col-3 h3 text-center text-white">Estado Atual: {{estudante.estado_atual}}</h3>
+                <div class="col-6 text-center text-white">
+                    <h5 class="h5 text-white">Porcentagem: {{estudante.getProgressoAtual()}} %</h3>
+                    <h5 class="h5 text-white">Fita: {{estudante.fita}}</h5>
+                    <h5 class="h5 text-white">Saída: {{''.join(estudante.saida)}}</h5>
+                </div>
+            </div>
+            <div class="row pt-4 text-center">
+                <h3 class="h3 mb-3 text-white">Transições Possíveis:</h3>
+                
+                {% for simbolo, transicao in estudante.getTransicoesAtuais().items() %}
+                    <a class="link-info" href="/fazer_transicao/{{estudante.nome}}/{{simbolo}}">
+                        Transicao com símbolo {{simbolo}} para {{transicao[0].getLabel()}} com saída {{transicao[1]}}
+                    </a>
+                {% endfor %}
+            </div>
+            <div class="row text-center">
+                {% if estudante.getLinks() %}
+                    <h2 class="h2 mt-2 text-white">Conteúdo Atual</h2>
+                    {% for link in estudante.getLinks() %}
+                        <a class="link-info" href="{{link}}">
+                            {{link}}
+                        </a>
+                    {% endfor %}
+                    <button class="btn btn-success col-4 flex-fill m-3" 
+                        onclick="window.location.href='{{estudante.abrirLinks()}}'">Abrir conteúdo atual
+                    </button>
+                {% endif %}
+                <button class="btn btn-info col-4 flex-fill m-3">Adicionar Conteúdo Customizado</button>
+            </div>
+        </div>
+        <div class="row mb-3 mt-3">
+            <h3 class="text-center text-secondary">Autômato</h3>
+            <img src="{{url_for('images', filename=estudante.nome+'.png')}}">
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

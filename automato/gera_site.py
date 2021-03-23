@@ -1,7 +1,13 @@
+
 import webbrowser
 
 
-def abrir_site(links):
+def abrir_links(links):
+    for link in links:
+        webbrowser.open_new_tab(f'{link}')
+
+
+def gerar_pagina_links(links):
     # Abre o arquivo
     f = open('x.html', 'w')
 
