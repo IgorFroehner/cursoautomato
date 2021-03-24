@@ -1,6 +1,6 @@
 # Gerenciador de Conteúdo da Matéria LFA Baseado em Autômato Finito com Saída
 
-O estudante pode gerênciar seu conteúdo no decorrer da matéria linguagens formais e autômatos.
+O estudante pode gerênciar seu conteúdo no decorrer da matéria linguagens formais e autômatos. O relatório completo se encontra em [relatorio.pdf](./relatorio.pdf).
 
 ## Pré-Requisitos
 
