@@ -25,7 +25,7 @@ Versão para terminal
 python3 main.py
 ```
 
-Versão web (versão incompleta)
+Versão web (em desenvolvimento)
 
 ```SHELL
 flask run
