@@ -15,6 +15,7 @@ class Estudante:
         self.saida = []  # saida até o momento
         self.automato = None
         self.links = None
+        self.ultimo_simbolo = ''
         self.estados_visitados = {}
         if n_automato == 1:
             self.automato = Automato().automatoTeste()
@@ -36,6 +37,9 @@ class Estudante:
         self.estado_antigo = self.estado_atual
         self.fita = ''
         self.saida = []
+
+    def esta_em_estado_final(self):
+        return self.automato.eEstadoFinal(self.estado_atual)
 
     def getEstadoAtual(self):
         return self.estado_atual
@@ -63,6 +67,16 @@ class Estudante:
         # return self.links
 
 
+    def add_conteudo_customizado(self, links, tag):
+        entrada = tag
+        saida = 'x'+tag
+        self.automato.addTransicao(self.estado_atual, self.estado_atual, entrada, saida)
+
+        self.automato.links[saida] = []
+
+        for link in links:
+            self.automato.links[saida].append(link)
+
     def abrirLinks(self):
         abrir_links(self.links)
 
@@ -83,7 +97,7 @@ class Estudante:
 
             for simbolo, estado_saida in self.automato.getTransicoes(self.estado_atual).items():
                 print(f'Transicao com símbolo {simbolo} para {estado_saida[0].getLabel()} com saída {estado_saida[1]}')
-                ultimo_simbolo = simbolo
+                self.ultimo_simbolo = simbolo
 
             if self.automato.eEstadoFinal(self.estado_atual):
                 print('ESTADO FINAL: se deseja encerrar use um símbolo que não pertença ao alfabeto')
@@ -125,8 +139,8 @@ class Estudante:
                             # print(f'\nSaída: {self.saida}\n')
                         break
             elif opcao == 2:
-                entrada = ultimo_simbolo + 'c'
-                saida = 'c' + ultimo_simbolo.split('a')[1]
+                entrada = self.ultimo_simbolo + 'c'
+                saida = 'c' + self.ultimo_simbolo.split('a')[1]
                 self.automato.addTransicao(self.estado_atual, self.estado_atual, entrada, saida)
 
                 self.automato.links[saida] = []

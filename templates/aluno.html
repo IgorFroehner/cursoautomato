@@ -42,11 +42,18 @@
                             {{link}}
                         </a>
                     {% endfor %}
-                    <button class="btn btn-success col-4 flex-fill m-3" 
-                        onclick="window.location.href='{{estudante.abrirLinks()}}'">Abrir conteúdo atual
-                    </button>
+                    <a class="col-3 flex-fill m-3">
+                        <button class="btn btn-success flex-fill m-3">Abrir conteúdo atual</button>
+                    </a>
                 {% endif %}
-                <button class="btn btn-info col-4 flex-fill m-3">Adicionar Conteúdo Customizado</button>
+                <a class="col-3 flex-fill m-3" href="/adicionar_conteudo/{{estudante.nome}}">
+                    <button class="btn btn-info" >Adicionar Conteúdo Customizado</button>
+                </a>
+                {% if estudante.esta_em_estado_final() %}
+                <a class="col-3 flex-fill m-3" href="/">
+                    <button class="btn btn-info" >Estado Final: Encerrar</button>
+                </a>
+                {% endif %}
             </div>
         </div>
         <div class="row mb-3 mt-3">

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+    <title>Adicionar conteúdo</title>
+</head>
+
+<body>
+    <div class="container-fluid bg-dark mb-auto mt-auto pt-5 pb-5">
+        <div class="container-lg align-items-center bg-transparent mb-auto mt-auto">
+            <div class="row align-content-center">
+                <h1 class="mb-5 mt-5 col-12 text-center text-white">Nome do Aluno: {{nome_aluno}}</h1>
+                <form action="/adicionar_conteudo/{{nome_aluno}}" method="POST">
+
+                    <div class="form-group">
+                        <label class="text-white">Dê uma tag a esse conteúdo: </label>
+                        <input class="form-control" type="text" name="tag_conteudo" id="tag_conteudo"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="text-white">Entre com os links, um com cada linha: </label>
+                        <textarea class="form-control" name="links" id="links" rows="13"></textarea>
+                    </div>
+                
+                    <button type="submit" class="btn btn-primary">Adicionar Conteúdo</button>
+                
+                </form>                
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
