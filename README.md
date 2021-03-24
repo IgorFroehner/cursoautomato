@@ -55,3 +55,7 @@ Estruturas das "entidadas" envolvolvidas na implementação.
 	* fita:
 	* saida:
 
+
+## ScreenShots
+
+![Alt text](./cursoautomato.jpg "a title")
