@@ -1,10 +1,10 @@
-# Gerenciador de Curso Baseado em Autômato Finito com Saída
+# Gerenciador de Conteúdo da Matéria LFA Baseado em Autômato Finito com Saída
 
-Dado um modelo de curso, o estudante pode evoluir nele.
+O estudante pode gerênciar seu conteúdo no decorrer da matéria linguagens formais e autômatos.
 
 ## Pré-Requisitos
 
-O sistema operacional usado foi UBUNTU.
+O sistema operacional usado foi UBUNTU 20.04 e a versão do python foi 3.8.5.
 
 * graphviz
 	```SHELL
@@ -31,7 +31,7 @@ Versão web (versão incompleta)
 flask run
 ```
 
-## Estrutura do Autômato
+## Estrutura do Sistema
 
 Estruturas das "entidadas" envolvolvidas na implementação.
 
@@ -55,6 +55,3 @@ Estruturas das "entidadas" envolvolvidas na implementação.
 	* fita:
 	* saida:
 
-selecionado o aluno ele possibilita a escolha entre as transições possíveis
-
-solicitada a transição ele da a saida q são os links para as disciplinas
