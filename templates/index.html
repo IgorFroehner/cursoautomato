@@ -11,17 +11,15 @@
     <title>Alunos</title>
 </head>
 
-<body>
-    <div class="container-fluid bg-dark mb-auto mt-auto pt-5 pb-5">
-        <div class="container-lg align-items-center bg-secondary mb-auto mt-auto">
-            <div class="container bg">
-                <h1 class="h1 text-center">ALUNOS</h1>
-                {% for aluno in alunos %}
-                    <li>
-                        <a href="/aluno/{{aluno}}">Aluno {{aluno}}</a>
-                    </li>
-                {% endfor %}
-            </div>
+<body class="bg-dark">
+    <div class="container-fluid bg-transparent mb-auto mt-auto pt-5 pb-5">
+        <div class="container-lg align-items-center bg-transparent mb-auto mt-auto text-white">
+            <h1 class="h1 text-center">ALUNOS</h1>
+            {% for aluno in alunos %}
+                <li>
+                    <a href="/aluno/{{aluno}}">Aluno {{aluno}}</a>
+                </li>
+            {% endfor %}
         </div>
     </div>
     

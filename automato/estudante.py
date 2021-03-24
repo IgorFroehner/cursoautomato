@@ -45,6 +45,8 @@ class Estudante:
         return self.estado_atual
 
     def getProgressoAtual(self):
+        if self.automato.getEstadoInicial()==self.estado_atual:
+            return 0.00
         return round(len(self.estados_visitados) * 100 / (len(self.automato.Q)), 2)
 
     def renderizarAutomato(self):
@@ -79,7 +81,6 @@ class Estudante:
 
     def abrirLinks(self):
         abrir_links(self.links)
-
 
     def getLinks(self):
         return self.links

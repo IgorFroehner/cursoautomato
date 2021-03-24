@@ -47,6 +47,11 @@ def adicionar_conteudo(nome_aluno):
         return redirect(f'/aluno/{nome_aluno}')
     return render_template('conteudo_adicional.html', nome_aluno=nome_aluno)
 
+@app.route('/finalizar/<nome_aluno>')
+def finalizar(nome_aluno):
+    if nome_aluno in estudantes:
+        estudantes.pop(nome_aluno)
+    return redirect(f'/')
 
 @app.after_request
 def add_header(r):
