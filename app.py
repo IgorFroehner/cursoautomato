@@ -41,9 +41,8 @@ def images(filename):
 def adicionar_conteudo(nome_aluno):
     if request.method == 'POST':
         req = request.form
-        tag = req['tag_conteudo']
         links = req['links'].replace('\n', '').split('\r')
-        estudantes[nome_aluno].add_conteudo_customizado(links, tag)
+        estudantes[nome_aluno].add_conteudo_customizado(links)
         return redirect(f'/aluno/{nome_aluno}')
     return render_template('conteudo_adicional.html', nome_aluno=nome_aluno)
 

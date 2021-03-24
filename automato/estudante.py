@@ -37,6 +37,8 @@ class Estudante:
         self.estado_antigo = self.estado_atual
         self.fita = ''
         self.saida = []
+        for simbolo, estado_saida in self.automato.getTransicoes(self.estado_atual).items():
+            self.ultimo_simbolo = simbolo
 
     def esta_em_estado_final(self):
         return self.automato.eEstadoFinal(self.estado_atual)
@@ -64,14 +66,10 @@ class Estudante:
 
         self.links = self.automato.links[self.automato.getTransicoes(self.estado_atual)[simbolo][1]]
 
-        # if len(self.automato.getTransicoes(self.estado_atual)) == 0:
-        #     return None
-        # return self.links
 
-
-    def add_conteudo_customizado(self, links, tag):
-        entrada = tag
-        saida = 'x'+tag
+    def add_conteudo_customizado(self, links):
+        entrada = self.ultimo_simbolo + 'c'
+        saida = 'c' + self.ultimo_simbolo.split('a')[1]
         self.automato.addTransicao(self.estado_atual, self.estado_atual, entrada, saida)
 
         self.automato.links[saida] = []
