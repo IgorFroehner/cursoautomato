@@ -16,17 +16,32 @@
         <div class="container-lg align-items-center bg-transparent mb-auto mt-auto text-white">
             <h1 class="h1 text-center">ALUNOS</h1>
             {% for aluno in alunos %}
-                <li>
-                    <a href="/aluno/{{aluno}}">Aluno {{aluno}}</a>
-                </li>
+            <li>
+                <a href="/aluno/{{aluno}}">Aluno {{aluno}}</a>
+            </li>
             {% endfor %}
         </div>
     </div>
-    
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
         crossorigin="anonymous"></script>
 
+
+    <!-- Footer -->
+    <footer class="bg-dark text-center text-white">
+        
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © Feito por  
+            <a class="text-white" href="https://github.com/IgorFroehner">Igor Froehner</a>
+            e 
+            <a class="text-white" href="https://github.com/Ssoppa">Matheus Soppa Geremias</a>
+            <p>
+                <a class="text-white" href="https://github.com/IgorFroehner/cursoautomato">Projeto no Github</a>
+            </p>
+        </div>
+    </footer>
+    <!-- Footer -->
 </body>
 
 </html>
